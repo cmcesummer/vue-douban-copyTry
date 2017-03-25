@@ -90,7 +90,11 @@
       },
       methods: {
         searchBtn: function () {
-          console.log(this.searchVal)
+          if(this.searchVal === '') {
+              alert('can\'t null')
+          } else {
+            console.log(this.searchVal)
+          }
         },
         showSearchInput: function() {
           this.isSearch = !this.isSearch;
