@@ -2,7 +2,7 @@
   <div class="nav">
     <ul>
       <li v-for="item in itemList" >
-        <router-link :to="item.url" :class="{active: routeName === item.name}">
+        <router-link :to="item.url" :class="{active: thisRoute === item.name}">
           {{item.text}}
         </router-link>
       </li>
@@ -12,6 +12,9 @@
 
 <script>
   export default {
+      props:{
+        thisRoute: String
+      },
       data() {
           return {
               itemList:[
