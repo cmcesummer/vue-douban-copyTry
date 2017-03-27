@@ -1,5 +1,5 @@
 <template>
-  <div class="nav">
+  <div class="nav" :class="{isFlex:thisFlex}">
     <ul>
       <li v-for="item in itemList" >
         <router-link :to="item.url" :class="{active: thisRoute === item.name}">
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+  import scroll from '@/assets/js/scroll'
   export default {
       props:{
         thisRoute: String
@@ -23,11 +24,15 @@
                 {text:"购物车",url:"/cart",name:'Cart'},
                 {text:"我的",url:"/my",name:'My'}
               ],
-              routeName:''
+              routeName:'',
+              thisFlex:''
           }
       },
       mounted() {
-          this.routeName = this.$route.name
+        this.routeName = this.$route.name;
+        window.addEventListener('scroll', () => {
+          window.scrollY > 50 ? this.thisFlex = true : this.thisFlex = false;
+        },false)
       }
   }
 </script>
@@ -38,6 +43,12 @@
     line-height:43px;
     border-bottom:2px solid #3ba94d;
     background-color: #ffffff;
+    &.isFlex {
+      position: fixed;
+      top:0;
+      right:0;
+      left:0;
+    }
     ul{
       display: flex;
       width: 100%;

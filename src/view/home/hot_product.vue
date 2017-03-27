@@ -33,7 +33,7 @@
   <div class="hot-product">
     <ul>
       <li v-for="item in hotProductList">
-        <router-link :to="item.url">
+        <router-link :to="item.url + '/' + item.id">
           <img :src="item.src" alt="img">
         </router-link>
         <div class="msg">
@@ -48,22 +48,7 @@
 </template>
 
 <script>
-  import axios from 'axios';
-
   export default {
-      data() {
-          return {
-              hotProductList:'1'
-          }
-      },
-      mounted() {
-          let _this = this;
-          //this.hotProductList = json;
-          axios.get('/static/json/products/products.json').then(response => {
-              _this.hotProductList = response.data.list.slice(0,8);
-          }).catch(err => {
-              console.log(err)
-          })
-      }
+      props:['hotProductList']
   }
 </script>

@@ -18,6 +18,13 @@ export default new Router({
       path: '/hello',
       name: 'Hello',
       component: Hello
+    },
+    {
+      path: '/detail/:id',
+      name:'Detail',
+      component: resolve => {
+        require(['@/view/detail/detail'], resolve)
+      }
     }
   ]
 })
