@@ -15,6 +15,16 @@
       <click-box :type="'noFather'"></click-box>
       <same-num></same-num>
     </div>
+    <hr>
+    <div style="padding:20px">
+      以上不使用vuex 一下使用
+    </div>
+    <hr>
+    <div style="padding:20px">
+      <click-vuex></click-vuex>
+      <input-vuex></input-vuex>
+      store.clickBtn = click(clickBtn) + input({{inputVal}}) = {{clickBtn}}
+    </div>
   </div>
 </template>
 
@@ -23,7 +33,17 @@
   import NumInput from '@/view/detail/numInput'
   import ClickBox from '@/view/detail/clickBox'
   import SameNum from '@/view/detail/sameNum'
+  import ClickVuex from '@/view/detail/clickVuex'
+  import InputVuex from '@/view/detail/inputVuex'
   export default {
+      computed:{
+        clickBtn() {
+            return this.$store.state.clickBtn
+        },
+        inputVal() {
+            return this.$store.state.inputVal
+        }
+      },
       data() {
           return {
               id: this.$route.params.id,
@@ -39,7 +59,9 @@
           GoBack,
           NumInput,
           ClickBox,
-        SameNum
+          SameNum,
+          ClickVuex,
+          InputVuex
       }
   }
 </script>

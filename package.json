@@ -6,13 +6,13 @@
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
-    "build": "node build/build.js",
-    "axios": "^0.15.2"
+    "build": "node build/build.js"
   },
   "dependencies": {
     "vue": "^2.2.2",
     "axios": "^0.15.3",
-    "vue-router": "^2.2.0"
+    "vue-router": "^2.2.0",
+    "vuex": "^2.2.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
