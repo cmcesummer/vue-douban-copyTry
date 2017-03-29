@@ -7,7 +7,11 @@
         </router-link>
       </li>
     </ul>
+    <div class="nav-top" :class="{isHaveTop:thisTop}" @click="toTop">
+      ↑
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -25,19 +29,53 @@
                 {text:"我的",url:"/my",name:'My'}
               ],
               routeName:'',
-              thisFlex:''
+              thisFlex:'',
+              thisTop:false
           }
       },
       mounted() {
         this.routeName = this.$route.name;
+        let start = 0,
+            end;
         window.addEventListener('scroll', () => {
+            end = window.scrollY;
+            start < end ? this.thisTop = true : this.thisTop = false;
+            setTimeout(() => {
+                start = end
+            }, 0);
           window.scrollY > 50 ? this.thisFlex = true : this.thisFlex = false;
         },false)
+      },
+    methods: {
+      toTop() {
+        let height = window.scrollY,
+            move = height / 10;
+        let top = setInterval(() => {
+          window.scroll(0, height = height - move);
+          height < height / 10 && clearInterval(top);
+        },100)
       }
+    }
   }
 </script>
 
 <style lang="scss">
+  .nav-top {
+    position: fixed;
+    bottom:30px;
+    right:30px;
+    background: rgba(39,40,34,0.8);
+    color: #ffffff;
+    height:20px;
+    width:20px;
+    border-radius:10px;
+    font-weight: 600;
+    line-height: 20px;
+    cursor: pointer;
+    &.isHaveTop{
+      display: none;
+    }
+  }
   .nav{
     height:43px;
     line-height:43px;
