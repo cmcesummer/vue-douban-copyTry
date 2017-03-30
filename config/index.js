@@ -27,6 +27,12 @@ module.exports = {
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
+    /**
+     * [proxyTable description]
+     * @type {Object}
+     * 跨域 '/local':'https://www.asd.com'
+     * 在dev-server中有 相应的转换 Object.Key()
+     */
     proxyTable: {},
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
